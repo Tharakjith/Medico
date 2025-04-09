@@ -1,0 +1,7 @@
+anaconda terminal
+cd path
+python app.py
+
+
+-----
+E:

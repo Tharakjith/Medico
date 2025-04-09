@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Player</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #222;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px;
+    }
+
+    .playlist {
+      width: 30%;
+      border: 1px solid #444;
+      padding: 50px;
+      border-radius: 5px;
+      background-color: #333;
+    }
+
+    .playlist h2 {
+      margin-top: 0;
+      color: #ddd;
+    }
+
+    .scrollable-list {
+      max-height: 300px; 
+      overflow-y: auto; 
+    }
+
+    .playlist input[type="text"] {
+      width: calc(90% - 90px);
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .playlist input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    li:hover {
+      text-decoration: underline;
+    }
+
+    .videos {
+      width: 60%;
+      border: 1px solid #444;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: #333;
+    }
+
+    .videos h2 {
+      margin-top: 0;
+      color: #ddd;
+    }
+
+    video {
+      width: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="playlist">
+      <h2>MediCo - Videos</h2>
+      <form id="searchForm">
+        <input type="text" id="search" placeholder="Search videos...">
+        <input type="submit" value="Search">
+      </form>
+      <ul class="scrollable-list" id="videoList">
+        <li data-src="uploads/BP Monitor Usage.mp4">BP Monitor Usage</li>
+	<li data-src="uploads/Inhaler Usage.mp4">Inhaler Usage</li>
+	<li data-src="uploads/Insulin Injection.mp4">Insulin Injection</li>
+	<li data-src="uploads/Nebulizer Usage.mp4">Nebulizer Usage</li>
+	<li data-src="uploads/Temperature Checkup.mp4">Temperature Checkup</li>
+	<li data-src="uploads/Earmould Hearing Aid.mp4">Earmould Hearing Aid</li>
+	<li data-src="uploads/Stethoscope.mp4">Stethoscope</li>
+	<li data-src="uploads/Automated External Defibrillator.mp4">Automated External Defibrillator</li>
+	<li data-src="uploads/Symbicort Turbuhaler.mp4">Symbicort Turbuhaler</li>
+	<li data-src="uploads/Glucose Meter.mp4">Glucose Meter</li>
+	<li data-src="uploads/Rotahaler.mp4">Rotahaler</li>
+	<li data-src="uploads/Microscope.mp4">Microscope</li>
+	<li data-src="uploads/CPAP Machine.mp4">CPAP Machine</li>
+	<li data-src="uploads/Medical Alert System.mp4">Medical Alert System</li>
+	<li data-src="uploads/Heating Pad.mp4">Heating Pad</li>
+	<li data-src="uploads/Syringe.mp4">Syringe</li>
+	<li data-src="uploads/Wheelchair.mp4">Wheelchair</li>
+	<li data-src="uploads/Contact Lens.mp4">Contact Lens</li>
+	<li data-src="uploads/Water Flosser.mp4">Water Flosser</li>
+	<li data-src="uploads/Pulse Oximeter.mp4">Pulse Oximeter</li>
+        <!-- Add more video items here -->
+      </ul>
+    </div>
+    <div class="videos">
+      <video id="videoPlayer" controls>
+        <!-- Video source will be dynamically added here -->
+      </video>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoList = document.getElementById('videoList');
+      const videoPlayer = document.getElementById('videoPlayer');
+
+      // Add click event listener to each video in the playlist
+      videoList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+          const videoSrc = event.target.getAttribute('data-src');
+          videoPlayer.src = videoSrc;
+          videoPlayer.play();
+        }
+      });
+
+      // Add submit event listener to the search form
+      const searchForm = document.getElementById('searchForm');
+      searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const searchTerm = document.getElementById('search').value.toLowerCase();
+        const videoItems = videoList.querySelectorAll('li');
+
+        videoItems.forEach(videoItem => {
+          const videoName = videoItem.textContent.toLowerCase();
+          if (videoName.includes(searchTerm)) {
+            videoItem.style.display = 'block';
+          } else {
+            videoItem.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

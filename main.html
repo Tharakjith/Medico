@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCo - A Medicine Informatics System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: none;
+            font-style: italic;
+        }
+        .buttons {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .button {
+            width: 200px;
+            height: 200px;
+            background-color: #f8f9fa; /* Light Gray */
+            color: #333;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #e9ecef; /* Lighter Gray */
+        }
+        .button i {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .button span {
+            font-size: 20px;
+            font-style: italic;
+        }
+        .chatbot {
+            background-color: #ffc107; /* Yellow */
+            color: #333;
+        }
+        .medicine-index {
+            background-color: #28a745; /* Green */
+            color: #fff;
+        }
+        .videos {
+            background-color: #dc3545; /* Red */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <h1>MediCo - A Medicine Informatics System</h1>
+            <div class="buttons">
+                <a href="http://127.0.0.1:5000/" class="button chatbot">
+                    <i class="fas fa-comments"></i>
+                    <span>Chatbot</span>
+                </a>
+                <a href="http://127.0.0.1:5000/" class="button medicine-index">
+                    <i class="fas fa-pills"></i>
+                    <span>Medicine Index</span>
+                </a>
+                <a href="videos/index.html" class="button videos">
+                    <i class="fas fa-video"></i>
+                    <span>Videos</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
